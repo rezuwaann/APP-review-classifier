@@ -1,41 +1,47 @@
-# 🍽️ Restaurant Review Sentiment Classifier
-**Author:** REZUWAN AHMED <br>
-**Tech Stack:** Python, Scikit-Learn, Natural Language Processing (NLP)
+# 📱 Google Play Store App Review Classifier
+**Author:** Rezuwan ahmed  <br>
+**Tech Stack:** Python, Scikit-Learn, NLP, Logistic Regression  
 
 ## 📌 Project Overview
-This project is a Machine Learning tool that automatically classifies restaurant reviews as **Positive** or **Negative**. Using Natural Language Processing (NLP) techniques, the model "reads" the text and understands customer satisfaction without human intervention.
+This project is a high-accuracy sentiment analysis tool designed to classify user feedback from the Google Play Store as **Positive** or **Negative**. By analyzing over 37,000 translated reviews, the model identifies key patterns in user satisfaction and app performance issues.
+
+## 🎯 Key Presentation Points (TOC Structure)
+Following the Theory of Computation (TOC) presentation guidelines, this project covers:
+
+1. **Introduction:** Brief on NLP and the business impact of app feedback.
+2. **Motivation:** Exploring binary sentiment classification in highly noisy real-world data.
+3. **Problem Statement:** Transforming unstructured user "slang" and feedback into mathematical vectors for machine learning.
+4. **Dataset & Pipeline:** * Dataset: 64,000+ raw rows (cleaned to ~37,000).
+    * Pipeline: Handling Null values -> Case Folding -> TF-IDF Vectorization with N-grams.
+5. **Methodology:** Comparison between Naive Bayes and Logistic Regression.
+6. **Implementation:** Python-based environment using `scikit-learn` on Google Colab.
+7. **Performance:** Achieving **~90% accuracy** through strategic data cleaning and Bigram analysis.
+8. **Conclusion:** Insights into how specific keywords (e.g., "crash", "smooth") dominate app sentiment.
+
+## 🛠️ The NLP Pipeline
 
 
+To achieve the best accuracy, the following steps were taken:
+* **Data Pruning:** Removed "Neutral" reviews to focus on strong sentiment signals.
+* **Bigram Analysis:** Used `ngram_range=(1, 2)` to allow the model to understand context (e.g., "not working" vs just "working").
+* **Logistic Regression:** Selected over Naive Bayes for better handling of feature correlations in large text datasets.
 
-## 🎯 Features
-- **Data Cleaning:** Processes raw text by converting to lowercase and removing noise.
-- **TF-IDF Vectorization:** Converts words into mathematical weights based on their importance.
-- **Naive Bayes Classifier:** A powerful probabilistic model used for text classification.
-- **Custom Prediction:** Includes a function to test the model with your own custom reviews.
-
-## 📊 Dataset
-The project uses the **Restaurant Reviews Dataset** from Kaggle, which consists of 1,000 reviews.
-- **Target Variable:** `Liked` (1 = Positive, 0 = Negative).
-
-## 📈 Model Performance
-Based on the test data (20% of the dataset), the model achieved the following results:
+## 📊 Results & Performance
+The model achieved high precision and recall, particularly in identifying negative reviews related to app bugs.
 
 | Metric | Score |
 | :--- | :--- |
-| **Accuracy** | 81.00% |
-| **Precision (Positive)** | High |
-| **Recall (Positive)** | High |
+| **Accuracy** | 90.15% |
+| **Precision (Positive)** | 0.92 |
+| **Recall (Positive)** | 0.94 |
 
 
 
-## 🚀 Live Samples
-Here is how the model handles real-world sentences:
-
-| Review | Predicted Sentiment |
+## 🚀 Live Sample Predictions
+| Review Text | Predicted Sentiment |
 | :--- | :--- |
-| "The food was absolutely delicious and the service was fast!" | **Positive ✅** |
-| "I hated the experience, the wait time was too long." | **Negative ❌** |
-| "Crust is not good." | **Negative ❌** |
-| "This place is amazing, I will come back again." | **Positive ✅** |
-
+| "This app crashes every time I open the menu." | **Negative ❌** |
+| "Absolutely beautiful UI and very fast transitions." | **Positive ✅** |
+| "Not working after the latest update." | **Negative ❌** |
+| "Best tool for my daily productivity!" | **Positive ✅** |
 
